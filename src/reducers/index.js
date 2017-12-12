@@ -17,19 +17,21 @@ const retrieveData = () => {
 }
 
 export default (todos = retrieveData(), action) => { // Initialize the state 'todos'
-    const newTodos = todos.slice(0);
+
     switch (action.type) {
         case NEW_TODO:
             saveData(todos.concat(action.payload));
             return todos.concat(action.payload);
         case TOGGLE_COMPLETE:
+            const newTodos = todos.slice(0);
             newTodos[action.payload].completed = !newTodos[action.payload].completed;
             saveData(newTodos);
             return newTodos;
         case DEL_TODO:
+            const newTodos2 = todos.slice(0);
             newTodos.splice(action.payload, 1);
-            saveData(newTodos);
-            return newTodos;
+            saveData(newTodos2);
+            return newTodos2;
         default:
             return todos;
     }

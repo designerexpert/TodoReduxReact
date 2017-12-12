@@ -29,7 +29,7 @@ export default (todos = retrieveData(), action) => { // Initialize the state 'to
             return newTodos;
         case DEL_TODO:
             const newTodos2 = todos.slice(0);
-            newTodos.splice(action.payload, 1);
+            newTodos2.splice(action.payload, 1);
             saveData(newTodos2);
             return newTodos2;
         default:
